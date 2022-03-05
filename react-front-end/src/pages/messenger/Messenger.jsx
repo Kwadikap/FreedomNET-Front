@@ -20,7 +20,7 @@ export default function Messenger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    socket.current = io("wss://freedomnet-node-backend.herokuapp.com:3001");
+    socket.current = io("wss://freedomnet-node-backend.herokuapp.com/api/");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
