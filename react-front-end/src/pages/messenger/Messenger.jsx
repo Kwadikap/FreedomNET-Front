@@ -9,8 +9,6 @@ import axios from "axios";
 import {io} from "socket.io-client";
 
 export default function Messenger() {
-  const [ friends, setFriends ] = useState([]);
-  const  { currentUser } = useContext(AuthContext);
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -35,17 +33,7 @@ export default function Messenger() {
   }, []);
 
   // GET FRIENDS OF USER
-  useEffect(() => {
-    const getFriends = async () => {
-      try {
-        const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/friends/'+currentUser._id);
-        setFriends(friendList.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getFriends() 
- },[currentUser._id]);
+  
 
 //  START CONVERSATION WITH ALL FRIENDS
  
