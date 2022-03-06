@@ -19,7 +19,7 @@ export default function Messenger() {
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
 
-  const ENDPOINT = 'https://freedomnet-node-backend.herokuapp.com/';
+  const ENDPOINT = 'wss://freedomnet-node-backend.herokuapp.com/';
 
   useEffect(() => {
     socket.current = io(ENDPOINT);
