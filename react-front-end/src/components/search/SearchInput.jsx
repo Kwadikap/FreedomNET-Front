@@ -24,8 +24,9 @@ const SearchInput = () => {
 
     
     return (
-        <>
-            
+        <div className='search'>
+            <div className="searchbar">
+                <Search className='searchIcon'/>
                 <input 
                     onChange={(e) => {setQuery(e.target.value); setSearch(true)}}
                     // onBlur={(e) => setSearch(false)}
@@ -33,8 +34,18 @@ const SearchInput = () => {
                     placeholder='Search for friends, posts and more' 
                     className="searchInput" 
                     />
-            
-      </>
+            </div>
+            <div className="listWrapper" style={ search ? {display:'flex'} : {display: 'none'}}>
+                <ul className="list">
+                    {users.filter((u) => 
+                       u.username.toLowerCase().includes(query)
+                     ).map((u) => (
+                        <li key={u.id} className="listItem">{u.username}</li>
+                        ))}
+                </ul>
+                <span className="closeSearch" onClick={(e) => setSearch(false)}>X</span>
+            </div>
+      </div>
     );
 };
 
