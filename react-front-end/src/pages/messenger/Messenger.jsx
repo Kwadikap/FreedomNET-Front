@@ -7,7 +7,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import {io} from "socket.io-client";
-import SearchInput from '../../components/search/SearchInput';
 
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
@@ -109,7 +108,7 @@ export default function Messenger() {
       <div className="messenger">
         <div className="chatMenu">
           <div className="chatMenuWrapper">
-            <SearchInput />
+            <input placeholder="Search for friends" className="chatMenuInput" />
             {conversations.map((c) => (
               <div onClick={() => setCurrentChat(c)}>
                 <Conversation conversation={c} currentUser={user} />
