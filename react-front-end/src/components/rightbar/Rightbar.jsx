@@ -25,7 +25,7 @@ export default function Rightbar({ user }) {
    useEffect(() => {
       const getFriends = async () => {
         try {
-          const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/friends/'+user?._id);
+          const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/'+user?._id+'/friends');
           setFriends(friendList.data);
         } catch (err) {
           console.log(err);
