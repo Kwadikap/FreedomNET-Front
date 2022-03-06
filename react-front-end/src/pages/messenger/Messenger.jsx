@@ -9,6 +9,8 @@ import axios from "axios";
 import {io} from "socket.io-client";
 
 export default function Messenger() {
+  const [ friends, setFriends ] = useState([]);
+  const  { currentUser, dispatch } = useContext(AuthContext);
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -31,6 +33,41 @@ export default function Messenger() {
       });
     });
   }, []);
+
+  // GET FRIENDS OF USER
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/friends/'+currentUser._id);
+        setFriends(friendList.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getFriends() 
+ },[currentUser._id]);
+
+//  START CONVERSATION WITH ALL FRIENDS
+ useEffect(() => {
+   const startConversations = async () => {
+    const newConversation = {
+      senderId: currentUser._id,
+      receiverId: null
+      }
+      
+      try {
+        for(let i of friends) {
+          newConversation.receiverId = friends[i]._id;
+          await axios.put('https://freedomnet-node-backend.herokuapp.com/api/conversations/', newConversation);
+        }
+      } catch (err) {
+        console.log(err)
+      }
+   }
+
+   startConversations();
+ }, [currentUser._id, friends]);
+
 
   useEffect(() => {
     arrivalMessage &&
