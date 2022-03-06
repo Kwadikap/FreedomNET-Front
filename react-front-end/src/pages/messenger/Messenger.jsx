@@ -10,7 +10,7 @@ import {io} from "socket.io-client";
 
 export default function Messenger() {
   const [ friends, setFriends ] = useState([]);
-  const  { currentUser, dispatch } = useContext(AuthContext);
+  const  { currentUser } = useContext(AuthContext);
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -48,17 +48,17 @@ export default function Messenger() {
  },[currentUser._id]);
 
 //  START CONVERSATION WITH ALL FRIENDS
-//  useEffect(() => {
-//    const startConversations = async () => {
-//       const newConversation = {
-//         members: [ currentUser._id, friends[0]._id ]
-//       }  
+ useEffect(() => {
+  const newConversation = {
+    members: [ currentUser._id, friends[0]._id ]
+  }  
+   
+  const startConversations = async () => {
+      await axios.put('https://freedomnet-node-backend.herokuapp.com/api/conversations/', newConversation);
+   } 
 
-//       await axios.put('https://freedomnet-node-backend.herokuapp.com/api/conversations/', newConversation);
-//    } 
-
-//    startConversations();
-//  }, [currentUser._id, friends]);
+   startConversations();
+ }, [currentUser._id, friends]);
 
 
   useEffect(() => {
