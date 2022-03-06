@@ -25,7 +25,7 @@ export default function Conversation({ conversation, currentUser }) {
       <img
         className="conversationImg"
         src={
-          user?.profilePicture
+          currentUser?.profilePicture
             ? PF + user.profilePicture
             : PF + "person/noAvatar.png"
         }
