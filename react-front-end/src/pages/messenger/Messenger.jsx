@@ -48,17 +48,15 @@ export default function Messenger() {
  },[currentUser._id]);
 
 //  START CONVERSATION WITH ALL FRIENDS
- useEffect(() => {
-  const newConversation = {
-    members: [ currentUser._id, friends[0]._id ]
-  }  
-   
-  const startConversations = async () => {
-      await axios.put('https://freedomnet-node-backend.herokuapp.com/api/conversations/', newConversation);
-   } 
+ const startConversations = async () => {
+   try {
+     axios.post('https://freedomnet-node-backend.herokuapp.com/api/conversations/'+currentUser._id+'/'+friends[0]._id);
+   } catch (err) {
+      console.log(err);
+   }
+ }
 
-   startConversations();
- }, [currentUser._id, friends]);
+ startConversations();
 
 
   useEffect(() => {
