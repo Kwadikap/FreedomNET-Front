@@ -31,7 +31,7 @@ export default function Conversation({ conversation, currentUser }) {
         }
         alt=""
       />
-      <span className="conversationName">{user?.username}</span>
+      <span className="conversationName">{currentUser?.username}</span>
     </div>
   );
 }
