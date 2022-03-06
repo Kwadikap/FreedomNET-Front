@@ -50,14 +50,14 @@ export default function Messenger() {
 //  START CONVERSATION WITH ALL FRIENDS
  useEffect(() => {
    const startConversations = async () => {
-    const newConversation = {
-      senderId: currentUser._id,
-      receiverId: null
-      }
       
       try {
         for(let i of friends) {
-          newConversation.receiverId = friends[i]._id;
+          const newConversation = {
+            senderId: currentUser._id,
+            receiverId: friends[i]._id
+          }
+          console.log(newConversation);
           await axios.put('https://freedomnet-node-backend.herokuapp.com/api/conversations/', newConversation);
         }
       } catch (err) {
