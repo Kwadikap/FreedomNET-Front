@@ -22,7 +22,7 @@ export default function Messenger() {
   const ENDPOINT = 'wss://freedomnet-node-backend.herokuapp.com/api/';
 
   useEffect(() => {
-    socket.current = io(ENDPOINT);
+    socket.current = io(ENDPOINT, {transports: ['websocket']});
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
