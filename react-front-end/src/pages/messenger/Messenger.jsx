@@ -48,15 +48,7 @@ export default function Messenger() {
  },[currentUser._id]);
 
 //  START CONVERSATION WITH ALL FRIENDS
- const startConversations = async () => {
-   try {
-     axios.post('https://freedomnet-node-backend.herokuapp.com/api/conversations/'+currentUser._id+'/'+friends[0]._id);
-   } catch (err) {
-      console.log(err);
-   }
- }
-
- startConversations();
+ 
 
 
   useEffect(() => {
