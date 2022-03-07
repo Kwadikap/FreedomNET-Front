@@ -17,6 +17,11 @@ const Post = ({ post }) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const {user:currentUser} = useContext(AuthContext);
 
+
+    const getFileExtension = (fileName) => {
+        return fileName.slice((fileName.lastIndexOf(".") - 1 >>> 0) + 2);
+      }
+
     useEffect(() => {
         setIsLiked(post.likes.includes(currentUser._id))
     }, [currentUser._id, post.likes]);
@@ -65,10 +70,13 @@ const Post = ({ post }) => {
                 </div>
                 <div className="postCenter">
                      <span className="postText">{post?.desc}</span>
-                     {/* <img className='postImg' src={PF+post.img} alt="" /> */}
-                     <video className='postImg' width='130px' height='130px' controls >
+                     { getFileExtension(post.img) === 'mp4' ? (<video className='postImg' controls >
                         <source src={PF+post.img} type='video/mp4' />
-                    </video>
+                    </video>) : <img className='postImg' src={PF+post.img} alt="" />}
+                     {/* <img className='postImg' src={PF+post.img} alt="" />
+                     <video className='postImg' controls >
+                        <source src={PF+post.img} type='video/mp4' />
+                    </video> */}
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
