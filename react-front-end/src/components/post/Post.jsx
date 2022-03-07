@@ -18,10 +18,6 @@ const Post = ({ post }) => {
     const {user:currentUser} = useContext(AuthContext);
 
 
-    const getFileExtension = (fileName) => {
-        return fileName.split('.').pop();
-      }
-
     useEffect(() => {
         setIsLiked(post.likes.includes(currentUser._id))
     }, [currentUser._id, post.likes]);
@@ -70,7 +66,7 @@ const Post = ({ post }) => {
                 </div>
                 <div className="postCenter">
                      <span className="postText">{post?.desc}</span>
-                     { getFileExtension(post.img) === 'mp4' ? (<video className='postImg' controls >
+                     { post.img.contains('mp4') ? (<video className='postImg' controls >
                         <source src={PF+post.img} type='video/mp4' />
                     </video>) : <img className='postImg' src={PF+post.img} alt="" />}
                      {/* <img className='postImg' src={PF+post.img} alt="" />
