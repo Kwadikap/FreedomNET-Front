@@ -67,7 +67,7 @@ const Share = () => {
                             <input 
                                 style={{display: 'none'}} 
                                 type="file" id='file' 
-                                accept='.png, .jpeg, .jpg' 
+                                accept='.png, .jpeg, .jpg, .mp4, .mov, .mp3' 
                                 onChange={(e) => setFile( e.target.files[0])}
                             />
                         </label>
