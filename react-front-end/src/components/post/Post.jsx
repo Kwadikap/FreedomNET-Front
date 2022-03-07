@@ -66,7 +66,9 @@ const Post = ({ post }) => {
                 <div className="postCenter">
                      <span className="postText">{post?.desc}</span>
                      {/* <img className='postImg' src={PF+post.img} alt="" /> */}
-                     <video className='postImg' src={PF+post.img} alt="" />
+                     <video className='postImg' width='130px' height='130px' controls >
+                        <source src={PF+post.img} type='video/mp4' />
+                    </video>
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
