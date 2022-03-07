@@ -66,13 +66,11 @@ const Post = ({ post }) => {
                 </div>
                 <div className="postCenter">
                      <span className="postText">{post?.desc}</span>
-                     { post.img.contains('mp4') ? (<video className='postImg' controls >
-                        <source src={PF+post.img} type='video/mp4' />
-                    </video>) : <img className='postImg' src={PF+post.img} alt="" />}
-                     {/* <img className='postImg' src={PF+post.img} alt="" />
+
+                     {/* <img className='postImg' src={PF+post.img} alt="" /> */}
                      <video className='postImg' controls >
                         <source src={PF+post.img} type='video/mp4' />
-                    </video> */}
+                    </video>
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
