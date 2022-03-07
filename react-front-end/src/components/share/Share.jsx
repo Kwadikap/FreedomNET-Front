@@ -26,7 +26,6 @@ const Share = () => {
             data.append('name', fileName); 
             data.append('file', file); 
             newPost.img = fileName;
-            user.profilePicture = fileName;
             try {
                 await axios.post('https://freedomnet-node-backend.herokuapp.com/api/upload', data);
             } catch (err) {
