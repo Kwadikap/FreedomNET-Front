@@ -67,10 +67,10 @@ const Post = ({ post }) => {
                 <div className="postCenter">
                      <span className="postText">{post?.desc}</span>
 
-                     {/* <img className='postImg' src={PF+post.img} alt="" /> */}
-                     <video className='postImg' controls >
+                     <img className='postImg' src={PF+post.img} alt="" />
+                     {/* <video className='postImg' controls >
                         <source src={PF+post.img} type='video/mp4' />
-                    </video>
+                    </video> */}
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
