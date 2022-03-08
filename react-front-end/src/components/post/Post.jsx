@@ -53,7 +53,7 @@ const Post = ({ post }) => {
                 <div className="postTop">
                     <div className="postTopLeft">
                         <Link to={`profile/${user.username}`}>
-                        <img className='postProfileImg' src={ user.profilePicture ? PF + user.profilePicture : PF+"person/noAvatar.png"} alt="" />
+                        <img className='postProfileImg' src={ user.profilePicture ? user.profilePicture : PF+"person/noAvatar.png"} alt="" />
                         </Link>
                         <span className="postUsername">
                             {user.username}
