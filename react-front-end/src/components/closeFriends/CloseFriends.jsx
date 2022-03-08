@@ -8,7 +8,7 @@ const CloseFriends = ({user}) => {
     return (
          <Link to={`profile/${user.username}`} style={{textDecoration: 'none', color: 'black'}}>
             <li className="leftbarFriend">
-                <img className='leftbarFriendImg' src={user.profilePicture ? PF+user.profilePicture : PF+"person/noAvatar.png"} alt="" />
+                <img className='leftbarFriendImg' src={user.profilePicture ? user.profilePicture : PF+"person/noAvatar.png"} alt="" />
                 <span className='leftbarFriendName'>{user.username}</span>
             </li>
         </Link>
