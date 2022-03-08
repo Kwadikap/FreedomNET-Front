@@ -7,7 +7,7 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import axios from 'axios';
 import { useParams } from 'react-router';
 
-const ProfilePage = () => {
+const ProfilePage = ({currentUser}) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
     const username = useParams().username;
@@ -25,7 +25,7 @@ const ProfilePage = () => {
         <>
             <Topbar />
             <div className="profile">
-            <Leftbar />
+            <Leftbar user={currentUser} />
             <div className="profileRight">
                 <div className="profileRightTop">
                     <div className="profileCover">
@@ -36,7 +36,7 @@ const ProfilePage = () => {
                         />
                         <img 
                             className='profileUserImg' 
-                            src={user.profilePicture ? PF+user.profilePicture : PF+"person/noAvatar.png"} 
+                            src={user.profilePicture ? user.profilePicture : PF+"person/noAvatar.png"} 
                             alt="" 
                         />
                     </div>
