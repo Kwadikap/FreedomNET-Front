@@ -39,11 +39,20 @@
     margin: 20px 0;
 }
 
+.leftbarTitle {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+
 .leftbarFriendList {
     padding: 0;
     margin: 0;
     list-style: none ;
 }
+
+
 
 
 

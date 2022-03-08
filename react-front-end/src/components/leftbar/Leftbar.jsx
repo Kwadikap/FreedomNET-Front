@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './leftbar.css'
 import { RssFeed, CompassCalibrationOutlined, Notifications, Settings, ChatOutlined } from '@material-ui/icons';
-import { Users } from  '../../dummyData'
 import CloseFriends from '../closeFriends/CloseFriends'
+import axios from 'axios';
 
 
 
 
 
-export default function Leftbar() {
+
+export default function Leftbar({user}) {
+  const [ friends, setFriends ] = useState([]);
+  
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/friends/'+user._id);
+        setFriends(friendList.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getFriends() 
+ },[user]);
+
+
   return (
     <div className='leftbar'>
       <div className="leftbarWrapper">
@@ -36,8 +52,9 @@ export default function Leftbar() {
         </ul>
         <button className='leftbarButton'>Show More</button>
         <hr className='leftbarHr' />
+        <h4 className="leftbarTitle">Friends</h4>
         <ul className='leftbarFriendList'>
-            {Users.map((u) => (
+            {friends.map((u) => (
               <CloseFriends key={u.id} user={u} />
             ))}
         </ul>
