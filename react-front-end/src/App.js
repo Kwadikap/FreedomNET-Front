@@ -19,7 +19,7 @@ function App() {
             <Route path='/login' element={ user ? <Navigate to='/' /> : <Login />} />
             <Route path='/register' element={ user ? <Navigate to='/' /> : <Register />} />
             <Route path='/messenger' element={ !user ? <Navigate to='/' /> : <Messenger />} />
-            <Route path='/profile/:username' element={<ProfilePage />} />
+            <Route path='/profile/:username' element={<ProfilePage currentUser={user} />} />
         </Routes>
       </>
   );
