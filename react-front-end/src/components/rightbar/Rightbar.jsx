@@ -25,14 +25,14 @@ export default function Rightbar({ user }) {
    useEffect(() => {
       const getFriends = async () => {
         try {
-          const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/friends/'+currentUser._id);
+          const friendList = await axios.get('https://freedomnet-node-backend.herokuapp.com/api/users/friends/'+user._id);
           setFriends(friendList.data);
         } catch (err) {
           console.log(err);
         }
       };
       getFriends() 
-   },[currentUser._id]);
+   },[user]);
    
    const handleClick = async () => {
       try {
@@ -62,7 +62,7 @@ export default function Rightbar({ user }) {
             <img className='rightbarAd' src={ad} alt="" />
             <h4 className="rightbarTitle">Online Friends</h4>
             <ul className="rightbarFriendList">
-                { Users.map ((u) => (
+                { friends.map ((u) => (
                   <Online key={u.id} user={u} />
                 ))}
             </ul>
@@ -97,10 +97,10 @@ export default function Rightbar({ user }) {
             <h4 className="rightbarTitle">User friends</h4>
             <div className="rightbarFollowings">
               {friends.map(friend => (
-                <Link to={'/profile/' + friend.username} style={{textDecoration: 'none'}} key={friend._id}>
+                <Link to={'/profile/' + friend.username} style={{textDecoration: 'none', color: 'black'}} key={friend._id}>
                 <div className="rightbarFollowing">
                     <img 
-                      src={friend.profilePicture ? PF+friend.profilePicture : PF+'person/noAvatar.png'} 
+                      src={friend.profilePicture ? friend.profilePicture : PF+'person/noAvatar.png'} 
                       alt=""
                       className="rightbarFollowingImg" 
                       />
