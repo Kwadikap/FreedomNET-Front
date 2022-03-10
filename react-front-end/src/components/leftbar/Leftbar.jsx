@@ -52,7 +52,7 @@ export default function Leftbar({user}) {
         </ul>
         <button className='leftbarButton'>Show More</button>
         <hr className='leftbarHr' />
-        <h4 className="leftbarTitle">Friends</h4>
+        <h4 className="leftbarTitle">Following</h4>
         <ul className='leftbarFriendList'>
             {friends.map((u) => (
               <CloseFriends key={u.id} user={u} />
