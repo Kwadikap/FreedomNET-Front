@@ -39,7 +39,7 @@ const Post = ({ post }) => {
 
     const likeHandler = () => {
         try {
-            axios.put('https://freedomnet-node-backend.herokuapp.com/api/posts/' + post._id + 'https://freedomnet-node-backend.herokuapp.com/api/like', {userId:currentUser._id})
+            axios.put('https://freedomnet-node-backend.herokuapp.com/api/posts/' + post._id + '/like', {userId:currentUser._id})
         } catch (err) {
             
         }
