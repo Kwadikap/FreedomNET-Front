@@ -7,6 +7,7 @@ import ProfilePage from './pages/profilePage/ProfilePage'
 import Register from './pages/register/Register'
 import { AuthContext } from './context/AuthContext';
 import Messenger from './pages/messenger/Messenger';
+import PageNotFound from './components/pageNotFound/PageNotFound';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path='/register' element={ user ? <Navigate to='/' /> : <Register />} />
             <Route path='/messenger' element={ !user ? <Navigate to='/' /> : <Messenger />} />
             <Route path='/profile/:username' element={<ProfilePage currentUser={user} />} />
+            <Route path='/*' element={<PageNotFound />} />
         </Routes>
       </>
   );
