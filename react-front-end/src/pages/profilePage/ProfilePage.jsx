@@ -6,6 +6,7 @@ import Rightbar from '../../components/rightbar/Rightbar'
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { PermMedia } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 
 const ProfilePage = ({currentUser}) => {
@@ -25,6 +26,7 @@ const ProfilePage = ({currentUser}) => {
 
 
 
+    //   UPLOAD IMAGE TO CLOUDINARY 
       const uploadImg = async (e) => {
         e.preventDefault();
         const newUser = {
@@ -42,6 +44,14 @@ const ProfilePage = ({currentUser}) => {
             axios.put('https://freedomnet-node-backend.herokuapp.com/api/users/'+user._id, newUser);
         });
      };
+
+
+    //  LOGOUT FUNCTION
+     const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
 
 
     
@@ -77,6 +87,11 @@ const ProfilePage = ({currentUser}) => {
                                 onChange={(e) => setFile( e.target.files[0] )}
                             />
                             <button onClick={uploadImg} > Upload Img </button>
+                            <button onClick={logout}>
+                                <Link to='/login' style={{textDecoration: 'none', color: 'black'}} >
+                                    Log out
+                                </Link>
+                            </button>
                         </label>) : null}
                     </div>
                     </form>
