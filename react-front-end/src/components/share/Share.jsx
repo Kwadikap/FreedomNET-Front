@@ -13,7 +13,7 @@ const Share = () => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const desc = useRef();
     const [ file, setFile ] = useState(null);
-    const [ profileUpload, setProfileUpload ] = useState(null);
+
 
     const submitHandler = async (e) => {
         e.preventDefault();

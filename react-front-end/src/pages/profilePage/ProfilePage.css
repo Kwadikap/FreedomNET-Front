@@ -48,3 +48,29 @@
 .profileRightBottom {
     display: flex;
 }
+
+
+.shareOptionText {
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.shareBottom {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shareOptions {
+    display: flex;
+    margin-left: 20px;
+}
+
+.shareOption {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
