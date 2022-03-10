@@ -67,7 +67,7 @@ const ProfilePage = ({currentUser}) => {
                     <div className="profileInfo">
                     <form className="shareBottom" >
                     <div className="shareOptions">
-                        <label htmlFor='file' className="shareOption">
+                    { user._id === currentUser._id ? ( <label htmlFor='file' className="shareOption">
                             <PermMedia htmlColor='tomato' className='shareIcon' />
                             <span className='shareOptionText'>Change profile picture</span>
                             <input 
@@ -77,7 +77,7 @@ const ProfilePage = ({currentUser}) => {
                                 onChange={(e) => setFile( e.target.files[0] )}
                             />
                             <button onClick={uploadImg} > Upload Img </button>
-                        </label>
+                        </label>) : null}
                     </div>
                     </form>
                         <h4 className='profileInfoName'>{user.username}</h4>
