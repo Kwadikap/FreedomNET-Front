@@ -5,8 +5,8 @@ import Feed from '../../components/feed/Feed';
 import Rightbar from '../../components/rightbar/Rightbar'
 import axios from 'axios';
 import { useParams } from 'react-router';
-import { PermMedia, Label, Room, EmojiEmotions, Cancel } from '@material-ui/icons';
-import { Image } from 'cloudinary-react'
+import { PermMedia } from '@material-ui/icons';
+
 
 const ProfilePage = ({currentUser}) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -24,7 +24,7 @@ const ProfilePage = ({currentUser}) => {
       }, [username]);
 
 
-      
+
       const uploadImg = async (e) => {
         e.preventDefault();
         const newUser = {
