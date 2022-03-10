@@ -88,7 +88,7 @@ const ProfilePage = ({currentUser}) => {
                             />
                             <button onClick={uploadImg} > Upload Img </button>
                             <button onClick={logout}>
-                                <Link to='/login' style={{textDecoration: 'none', color: 'black'}} >
+                                <Link to='/' style={{textDecoration: 'none', color: 'black'}} >
                                     Log out
                                 </Link>
                             </button>
