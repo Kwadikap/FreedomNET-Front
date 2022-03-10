@@ -41,7 +41,7 @@ function Feed({username}) {
             <Post key={p._id} post={p} />
           ))}
       </div> 
-      : <span className="noPosts">
+      : <span className="noPosts feedWrapper">
           This user has no posts.
         </span>
       }
