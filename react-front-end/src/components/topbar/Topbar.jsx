@@ -8,7 +8,6 @@ import Searchbar from '../searchbar/Searchbar';
 
 
 export default function Topbar() {
-
   const {user} = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   
