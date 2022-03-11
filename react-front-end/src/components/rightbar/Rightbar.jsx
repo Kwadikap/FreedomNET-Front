@@ -1,13 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './rightbar.css'
 import gift from '../../assets2/gift.png'
 import ad from '../../assets2/ad.png'
-import { Users } from  '../../dummyData'
-import Online from '../online/Online'
-import { useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { Add, Remove } from '@material-ui/icons';
 
@@ -17,6 +13,7 @@ export default function Rightbar({ user }) {
   const [ friends, setFriends ] = useState([]);
   const  { user: currentUser, dispatch } = useContext(AuthContext);
   const [ followed, setFollowed ] = useState(currentUser.followings.includes(user?._id));
+  
 
    useEffect(() => {
      setFollowed(currentUser.followings.includes(user?._id))
@@ -32,7 +29,7 @@ export default function Rightbar({ user }) {
         }
       };
       getFriends() 
-   },[user, currentUser._id]);
+   },[user]);
    
    const handleClick = async () => {
       try {
@@ -50,6 +47,21 @@ export default function Rightbar({ user }) {
       setFollowed(!followed);
    }
 
+   const startConversation = async (e) => {
+      e.preventDefault();
+      const newConversation = {
+        senderId: currentUser._id,
+        receiverId: user._id
+      }
+
+      try {
+       const res = await axios.post('https://freedomnet-node-backend.herokuapp.com/api/conversations', newConversation);
+       console.log(res.data);
+      } catch (err) {
+          console.log(err);
+      }
+   }
+
   const HomeRightbar = () => {
       return(
         <>
@@ -60,6 +72,12 @@ export default function Rightbar({ user }) {
                 </span>
             </div>
             <img className='rightbarAd' src={ad} alt="" />
+            {/* <h4 className="rightbarTitle">Online</h4>
+            <ul className="rightbarFriendList">
+                { friends.map ((u) => (
+                  <Online key={u.id} user={u} />
+                ))}
+            </ul> */}
         </>
       )
     }
@@ -73,6 +91,11 @@ export default function Rightbar({ user }) {
                {followed ? <Remove /> : <Add /> }
              </button>
            )}
+            <button className='rightbarFollowButton' onClick={startConversation}>
+                <Link to='/messenger'>
+                  Message
+                </Link>
+            </button>
             <h4 className="rightbarTitle">User information </h4>
             <div className="rightbarInfo">
               <div className="rightbarInfoItem">
