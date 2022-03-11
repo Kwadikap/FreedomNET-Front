@@ -72,18 +72,18 @@ export default function Messenger() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const message = {
+      conversationId: currentChat._id,
       sender: user._id,
       text: newMessage,
-      conversationId: currentChat._id,
     };
 
-    const receiverId = currentChat.members.find(
+    const receiver = currentChat.members.find(
       (member) => member !== user._id
     );
 
     socket.current.emit("sendMessage", {
       senderId: user._id,
-      receiverId,
+      receiverId: receiver,
       text: newMessage,
     });
 
