@@ -6,7 +6,7 @@ import ChatOnline from "../../components/chatOnline/ChatOnline";
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import {io} from "socket.io-client";
+import { io } from "socket.io-client";
 
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
@@ -15,14 +15,12 @@ export default function Messenger() {
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  let socket = useRef();
+  const socket = useRef();
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
 
-  const ENDPOINT = 'wss://freedomnet-node-backend.herokuapp.com/api/';
-
   useEffect(() => {
-    socket.current = io(ENDPOINT, {transports: ['websocket']});
+    socket.current = io("ws://freedomnet-node-backend.herokuapp.com");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -31,13 +29,6 @@ export default function Messenger() {
       });
     });
   }, []);
-
-  // GET FRIENDS OF USER
-  
-
-//  START CONVERSATION WITH ALL FRIENDS
- 
-
 
   useEffect(() => {
     arrivalMessage &&
@@ -97,7 +88,7 @@ export default function Messenger() {
     });
 
     try {
-      const res = await axios.post("https://freedomnet-node-backend.herokuapp.com/api/messages", message);
+      const res = await axios.post("/messages", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
@@ -117,7 +108,7 @@ export default function Messenger() {
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
             {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)}>
+              <div key={c._id} onClick={() => setCurrentChat(c)} >
                 <Conversation conversation={c} currentUser={user} />
               </div>
             ))}
@@ -129,7 +120,7 @@ export default function Messenger() {
               <>
                 <div className="chatBoxTop">
                   {messages.map((m) => (
-                    <div ref={scrollRef}>
+                    <div key={m._id} ref={scrollRef}>
                       <Message message={m} own={m.sender === user._id} />
                     </div>
                   ))}

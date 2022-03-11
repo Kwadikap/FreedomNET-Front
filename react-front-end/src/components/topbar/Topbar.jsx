@@ -34,13 +34,12 @@ export default function Topbar() {
                <Person />
                <span className="topbarIconBadge">1</span>
             </div>
-            {/* TEMPORARILY DISABLED LINK TO THE CHAT FEATURE*/}
-            {/* <Link to='/messenger' style={{textDecoration: 'none', color: 'white'}}> */}
+            <Link to='/messenger' style={{textDecoration: 'none', color: 'white'}}>
             <div className="topbarIconItem">
                <Chat />
                <span className="topbarIconBadge">1</span>
             </div>
-            {/* </Link> */}
+            </Link>
             <div className="topbarIconItem">
                <Notifications />
                <span className="topbarIconBadge">1</span>
