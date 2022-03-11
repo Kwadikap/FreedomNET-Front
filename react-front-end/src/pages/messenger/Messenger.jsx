@@ -77,18 +77,20 @@ export default function Messenger() {
       text: newMessage,
     };
 
-    const receiver = currentChat.members.find(
+    const receiverId = currentChat.members.find(
       (member) => member !== user._id
     );
 
-    socket.current.emit("sendMessage", {
-      senderId: user._id,
-      receiverId: receiver,
-      text: newMessage,
-    });
-
+    if(onlineUsers.includes(receiverId)){
+      socket.current.emit("sendMessage", {
+        senderId: user._id,
+        receiverId,
+        text: newMessage,
+      });
+    }
+      
     try {
-      const res = await axios.post("https://freedomnet-node-backend.herokuapp.com/api/messages/", message);
+      const res = await axios.post("https://freedomnet-node-backend.herokuapp.com/api/messages", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
@@ -108,7 +110,7 @@ export default function Messenger() {
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
             {conversations.map((c) => (
-              <div key={c._id} onClick={() => setCurrentChat(c)} >
+              <div key={c._id} onClick={() => setCurrentChat(c)}>
                 <Conversation conversation={c} currentUser={user} />
               </div>
             ))}
@@ -121,7 +123,7 @@ export default function Messenger() {
                 <div className="chatBoxTop">
                   {messages.map((m) => (
                     <div key={m._id} ref={scrollRef}>
-                      <Message message={m} own={m.sender === user._id} />
+                      <Message  message={m} own={m.sender === user._id} />
                     </div>
                   ))}
                 </div>
