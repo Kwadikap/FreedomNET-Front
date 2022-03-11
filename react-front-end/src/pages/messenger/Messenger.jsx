@@ -88,7 +88,7 @@ export default function Messenger() {
     });
 
     try {
-      const res = await axios.post("/messages", message);
+      const res = await axios.post("https://freedomnet-node-backend.herokuapp.com/api/messages/", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
