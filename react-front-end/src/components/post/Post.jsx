@@ -17,7 +17,6 @@ const Post = ({ post }) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const {user:currentUser} = useContext(AuthContext);
 
-
     useEffect(() => {
         setIsLiked(post.likes.includes(currentUser._id))
     }, [currentUser._id, post.likes]);
@@ -66,11 +65,7 @@ const Post = ({ post }) => {
                 </div>
                 <div className="postCenter">
                      <span className="postText">{post?.desc}</span>
-
                      <img className='postImg' src={PF+post.img} alt="" />
-                     {/* <video className='postImg' controls >
-                        <source src={PF+post.img} type='video/mp4' />
-                    </video> */}
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">

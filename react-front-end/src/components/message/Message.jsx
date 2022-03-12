@@ -1,13 +1,18 @@
 import "./message.css";
 import { format } from "timeago.js";
 
-export default function Message({ message, own }) {
+export default function Message({ message, own, sender, receiver }) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const senderProfilePicture = sender.profilePicture ? sender.profilePicture : PF+"person/noAvatar.png";
+  const receiverProfilePicture = receiver.profilePicture ? receiver.profilePicture : PF+"person/noAvatar.png";
+
+
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
         <img
           className="messageImg"
-          src="https://images.pexels.com/photos/3686769/pexels-photo-3686769.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          src={ own ? senderProfilePicture : receiverProfilePicture }
           alt=""
         />
         <p className="messageText">{message.text}</p>

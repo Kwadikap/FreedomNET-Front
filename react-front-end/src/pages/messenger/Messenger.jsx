@@ -69,6 +69,13 @@ export default function Messenger() {
     getMessages();
   }, [currentChat]);
 
+
+  const getReceiverId = () => {
+    return currentChat.members.find(
+    (member) => member !== user._id
+  )};
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const message = {
@@ -123,7 +130,7 @@ export default function Messenger() {
                 <div className="chatBoxTop">
                   {messages.map((m) => (
                     <div key={m._id} ref={scrollRef}>
-                      <Message  message={m} own={m.sender === user._id} />
+                      <Message  message={m} own={m.sender === user._id} sender={user} receiver={getReceiverId} />
                     </div>
                   ))}
                 </div>
