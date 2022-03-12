@@ -92,7 +92,7 @@ export default function Rightbar({ user }) {
              </button>
            )}
             <button className='rightbarFollowButton' onClick={startConversation}>
-                <Link to='/messenger'>
+                <Link to='/messenger' style={{textDecoration: 'none', color: 'white'}}>
                   Message
                 </Link>
             </button>
