@@ -20,15 +20,19 @@ const Share = () => {
         const newPost = {
             userId: user._id,
             desc: desc.current.value,
+            img: null
         }
         if(file) {
             const data = new FormData();
-            const fileName = Date.now() + file.name;
-            data.append('name', fileName); 
             data.append('file', file); 
-            newPost.img = fileName;
+            data.append('upload_preset', 'freedomNET-upload');
             try {
-                await axios.post('https://freedomnet-node-backend.herokuapp.com/api/upload', data);
+                await axios.post('https://api.cloudinary.com/v1_1/kwadev/image/upload', data)
+                .then((response) => {
+                    console.log(response);
+                    newPost.img = response.data.url;
+                    axios.put('https://freedomnet-node-backend.herokuapp.com/api/posts', newPost);
+                });
             } catch (err) {
                 console.log(err);
             }
@@ -38,9 +42,10 @@ const Share = () => {
             await axios.post('https://freedomnet-node-backend.herokuapp.com/api/posts', newPost);
             window.location.reload();
         } catch (err) {
-            
+            console.log(err);
         }
     }
+   
 
     return (
         <div className='share'>
