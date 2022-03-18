@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './leftbar.css'
-import { RssFeed, CompassCalibrationOutlined, Notifications, Settings, ChatOutlined } from '@material-ui/icons';
+// import { RssFeed, CompassCalibrationOutlined, Notifications, Settings, ChatOutlined } from '@material-ui/icons';
 import CloseFriends from '../closeFriends/CloseFriends'
 import axios from 'axios';
 
@@ -28,7 +28,7 @@ export default function Leftbar({user}) {
   return (
     <div className='leftbar'>
       <div className="leftbarWrapper">
-        <ul className="leftbarList">
+        {/* <ul className="leftbarList">
             <li className="leftbarListItem">
               <RssFeed className='leftbarIcon'/>
               <span className="leftbarListItemText">Feed</span>
@@ -50,12 +50,13 @@ export default function Leftbar({user}) {
               <span className="leftbarListItemText">Settings</span>
             </li>
         </ul>
-        <button className='leftbarButton'>Show More</button>
-        <hr className='leftbarHr' />
+        <button className='leftbarButton'>Show More</button> */}
+        {/* <h4>Following</h4> */}
         <h4 className="leftbarTitle">Following</h4>
+        <hr className='leftbarHr' />
         <ul className='leftbarFriendList'>
             {friends.map((u) => (
-              <CloseFriends key={u.id} user={u} />
+              <CloseFriends key={u._id} user={u} />
             ))}
         </ul>
       </div>
