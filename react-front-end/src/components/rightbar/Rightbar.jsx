@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import './rightbar.css'
 import gift from '../../assets2/gift.png'
 import ad from '../../assets2/ad.png'
+import ad2 from '../../assets2/Google-Display-Ad-Example-Adobe-Creative-Cloud.jpeg'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
@@ -65,13 +66,14 @@ export default function Rightbar({ user }) {
   const HomeRightbar = () => {
       return(
         <>
-          <div className="birthdayContainer">
+          {/* <div className="birthdayContainer">
                 <img className='birthdayImg' src={gift} alt="" />
                 <span className='birthdayText'>
                   <b>Mary Fan</b> and <b>4 other friends </b> have a birthday today.
                 </span>
-            </div>
+            </div> */}
             <img className='rightbarAd' src={ad} alt="" />
+            <img className='rightbarAd' src={ad2} alt="" />
             {/* <h4 className="rightbarTitle">Online</h4>
             <ul className="rightbarFriendList">
                 { friends.map ((u) => (
