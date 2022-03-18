@@ -72,8 +72,8 @@ export default function Rightbar({ user }) {
                   <b>Mary Fan</b> and <b>4 other friends </b> have a birthday today.
                 </span>
             </div> */}
-            <img className='rightbarAd' src={ad2} alt="" />
             <img className='rightbarAd' src={ad} alt="" />
+            <img className='rightbarAd' src={ad2} alt="" />
             {/* <h4 className="rightbarTitle">Online</h4>
             <ul className="rightbarFriendList">
                 { friends.map ((u) => (
