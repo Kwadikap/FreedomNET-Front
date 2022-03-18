@@ -3,8 +3,8 @@ import { format } from "timeago.js";
 
 export default function Message({ message, own, sender, receiver }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  // const senderProfilePicture = sender.profilePicture ? sender.profilePicture : PF+"person/noAvatar.png";
-  // const receiverProfilePicture = receiver.profilePicture ? receiver.profilePicture : PF+"person/noAvatar.png";
+  const senderProfilePicture = sender.profilePicture ? sender.profilePicture : PF+"person/noAvatar.png";
+  const receiverProfilePicture = receiver.profilePicture ? receiver.profilePicture : PF+"person/noAvatar.png";
 
 
   return (
@@ -12,7 +12,7 @@ export default function Message({ message, own, sender, receiver }) {
       <div className="messageTop">
         <img
           className="messageImg"
-          src={ own ? sender.profilePicture : receiver.profilePicture }
+          src={ own ? senderProfilePicture : receiverProfilePicture }
           alt=""
         />
         <p className="messageText">{message.text}</p>
