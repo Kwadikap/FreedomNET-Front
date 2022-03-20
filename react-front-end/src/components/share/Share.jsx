@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useRef } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const Share = () => {
@@ -45,13 +46,14 @@ const Share = () => {
             console.log(err);
         }
     }
-   
 
     return (
         <div className='share'>
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img className='shareProfileImg' src={ user.profilePicture ? user.profilePicture : PF+'person/noAvatar.png'} alt="" />
+                    <Link to={`profile/${user.username}`}>
+                        <img className='shareProfileImg' src={user.profilePicture ? user.profilePicture : PF+'person/noAvatar.png'} alt="" />
+                    </Link>
                     <input 
                         placeholder={"What's on your mind "+user.username + "?"} 
                         className='shareInput' 
