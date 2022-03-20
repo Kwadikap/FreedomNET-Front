@@ -8,6 +8,7 @@ import { useParams } from 'react-router';
 import { PermMedia } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 
 const ProfilePage = ({currentUser}) => {
@@ -79,10 +80,19 @@ const ProfilePage = ({currentUser}) => {
                     <form className="shareBottom" >
                     <div className="shareOptions">
                     { user._id === currentUser._id ? 
-                     (<>
+                      (<>
                         <label htmlFor='file' className="shareOption">
                          <PermMedia htmlColor='tomato' className='shareIcon' />
-                         <Button variant='outlined' color='primary'>Change profile picture</Button>
+                         <Typography className='shareOptionText'
+                                 style={
+                                     {border: '1px solid white', 
+                                      borderRadius: '5px', 
+                                      padding: '5px',
+                                      backgroundColor: 'blue',
+                                      color: 'white'
+                                      }}>
+                                          Change profile picture
+                            </Typography>
                          <input 
                              style={{display: 'none'}} 
                              type="file" id='file' 
