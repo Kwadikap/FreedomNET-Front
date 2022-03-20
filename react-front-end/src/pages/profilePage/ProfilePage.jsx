@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 import { PermMedia } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 
 const ProfilePage = ({currentUser}) => {
@@ -77,22 +78,25 @@ const ProfilePage = ({currentUser}) => {
                     <div className="profileInfo">
                     <form className="shareBottom" >
                     <div className="shareOptions">
-                    { user._id === currentUser._id ? ( <label htmlFor='file' className="shareOption">
-                            <PermMedia htmlColor='tomato' className='shareIcon' />
-                            <span className='shareOptionText'>Change profile picture</span>
-                            <input 
-                                style={{display: 'none'}} 
-                                type="file" id='file' 
-                                
-                                onChange={(e) => setFile( e.target.files[0] )}
-                            />
-                            <button onClick={uploadImg} > Upload Img </button>
-                            <button onClick={logout}>
-                                <Link to='/' style={{textDecoration: 'none', color: 'black'}} >
-                                    Log out
-                                </Link>
-                            </button>
-                        </label>) : null}
+                    { user._id === currentUser._id ? 
+                     (<>
+                        <label htmlFor='file' className="shareOption">
+                         <PermMedia htmlColor='tomato' className='shareIcon' />
+                         <Button variant='outlined' color='primary'>Change profile picture</Button>
+                         <input 
+                             style={{display: 'none'}} 
+                             type="file" id='file' 
+                             
+                             onChange={(e) => setFile( e.target.files[0] )}
+                         />
+                         <Button variant='contained' color='primary' onClick={uploadImg} > Confirm Upload  </Button> <br />
+                         </label>
+                         <Button variant='contained' color='secondary' onClick={logout}>
+                             <Link to='/' style={{textDecoration: 'none', color: 'black'}} >
+                                 Log out
+                             </Link>
+                         </Button>
+                     </>) : null}
                     </div>
                     </form>
                         <h4 className='profileInfoName'>{user.username}</h4>
