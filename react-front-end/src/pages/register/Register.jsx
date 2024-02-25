@@ -23,7 +23,7 @@ const Register = () => {
                 password: password.current.value,
             }
             try {
-                await axios.post('http://freedomnet-node-backend.herokuapp.com/api/auth/register', user);
+                await axios.post('https://freedomnet-node-backend.herokuapp.com/api/auth/register', user);
                 navigate('/login');
             } catch (err) {
                 console.log(err)
