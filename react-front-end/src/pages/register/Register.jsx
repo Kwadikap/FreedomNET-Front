@@ -12,10 +12,10 @@ const Register = () => {
     const navigate = useNavigate();
 
     const handleClick = async (e) => {
-        e.preventDefault();   
-        if(passwordAgain.current.value !== password.current.value) {
+        e.preventDefault();
+        if (passwordAgain.current.value !== password.current.value) {
             passwordAgain.current.setCustomValidity("Passwords don't match!");
-        } 
+        }
         else {
             const user = {
                 username: username.current.value,
@@ -40,37 +40,37 @@ const Register = () => {
                 </div>
                 <div className="loginRight">
                     <form className="loginBox" onSubmit={handleClick}>
-                        <input 
-                            type="text" 
-                            required className="loginInput" 
-                            placeholder='Username' 
-                            ref={username} 
+                        <input
+                            type="text"
+                            required className="loginInput"
+                            placeholder='Username'
+                            ref={username}
                         />
-                        <input 
-                            type="email" 
-                            required 
+                        <input
+                            type="email"
+                            required
                             className="loginInput"
-                            placeholder='Email' 
-                            ref={email} 
+                            placeholder='Email'
+                            ref={email}
                         />
-                        <input 
-                            type="password" 
-                            required 
-                            className="loginInput" 
-                            placeholder='Password' 
-                            ref={password} 
+                        <input
+                            type="password"
+                            required
+                            className="loginInput"
+                            placeholder='Password'
+                            ref={password}
                             minLength='6'
                         />
-                        <input 
-                            type="password" 
-                            required className="loginInput" 
-                            placeholder='Password Again' 
-                            ref={passwordAgain} 
+                        <input
+                            type="password"
+                            required className="loginInput"
+                            placeholder='Password Again'
+                            ref={passwordAgain}
                         />
                         <button className="loginButton" type='submit'>Sign Up</button>
                         <button className="loginRegisterButton">
-                            <Link to='/login' style={{textDecoration: 'none', color:'white'}}>
-                                Log In 
+                            <Link to='/login' style={{ textDecoration: 'none', color: 'white' }}>
+                                Log In
                             </Link>
                         </button>
                     </form>
